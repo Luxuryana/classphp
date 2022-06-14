@@ -40,7 +40,7 @@ class Product {
         return $this-> prixVente + $taxe;
     }
 
-    public function GetName () {
+    public function getName () {
         return $this -> name;
     }
 
