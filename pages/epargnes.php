@@ -1,10 +1,12 @@
-<section> <?php
+<section class="CCCE">
+    
+<?php
 include_once('classes/Voiture.php');
 include_once('classes/compte.php');
 include_once('classes/Product.php');
 include_once('classes/compteCourant.php');
 include_once ('classes/compteEpargne.php');
-
+include_once("pages/BDD.php");
 
 /*
 //variable = nouvel objet (Voiture) //instanciation implicite
@@ -37,15 +39,16 @@ echo $compte;
 echo $compte -> Depot (500);
 echo $compte -> Retrait (200); */
 
-$comptes = [
-    [3000, 'Barb', 'b', 2.5, 500],
-    [1000, 'Fernand', 'k', 2.5, 100],
-    [2000, 'Yoko', 'Q', 2.5, 800]
-];
 
 /*$product = New product ("gilet", 15, 2, 20, "tissu sympathique");
 echo $product->getPrixTax();
 echo $product;*/
+
+$comptes = [
+    [3000, 'Barb', 'Riviera', 2.5, 580],
+    [1000, 'Fernand', 'Ramos', 2.5, 400],
+    [2000, 'Yoko', 'Itsuki', 2.5, 800]
+];
 
 
 $compteEpargne = [];
@@ -54,24 +57,23 @@ foreach ($comptes as $p) {
     $compteEpargne[] = new CE ($p[0],$p[1],$p[2],$p[3]);
 }
 
-foreach ($compteEpargne as $key=>$p) {
-    echo '<a href="index.php?id='.$key.'">'.$p->getNom().'</a> ';
-}
-echo '<br><a href="index.php?page=epargnes&product=1">Tous les produits</a>';
-
-if (isset($_GET['id'])) { //pour afficher dans barb, fernand, yoko
-   
- echo '<br><h2>Votre compte epargne</h2>';
- echo $compteEpargne[$_GET['id']];
-}
-
-if (isset($_GET['product'])) {   
-    echo '<h2>Les comptes épargnes</h2>';
-    foreach ($compteEpargne as $p){
-        echo $p;
-    }
-} //pour afficher tous les produits
-
 ?>
+
+<h1>Comptes epargnes</h1>
+<table class="table table-dark table-hover">
+<thead>
+<th>Nom</th>
+<th>Prenom</th>
+<th>Solde</th>
+<th>Gain annuel</th>
+</thead>
+<?php
+foreach ($compteEpargne as $p){
+echo "<tr>";
+echo "<td>".$p->getNom(). "</td><td>".$p->getPrenom()."</td><td>".$p->getSolde(). " €</td><td>".$p->getTia (). " €</td>";
+echo "</tr>";
+}
+?>
+</table>
 
 </section>

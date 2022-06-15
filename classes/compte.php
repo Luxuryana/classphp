@@ -35,7 +35,7 @@ abstract class Compte
       }
 
     //GETTER
-    public function get_Solde () {
+    public function getSolde () {
         return $this-> solde;
     }  
     public function getNom () {
@@ -46,13 +46,13 @@ abstract class Compte
     } 
    
     //SETTER
-    public function set_Solde ($solde) {
+    public function setSolde ($solde) {
         $this -> solde = $solde; 
     }    
-    public function set_Nom ($nom) {
+    public function setNom ($nom) {
         $this -> nom = $nom; 
     }
-    public function set_Prenom ($prenom) {
+    public function setPrenom ($prenom) {
         $this -> prenom = $prenom; 
     }
     
